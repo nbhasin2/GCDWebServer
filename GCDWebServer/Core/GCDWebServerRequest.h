@@ -29,6 +29,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#if __has_attribute(swift_attr)
+#define GCD_SWIFT_UNCHECKED_SENDABLE __attribute__((swift_attr("@unchecked Sendable")))
+#else
+#define GCD_SWIFT_UNCHECKED_SENDABLE
+#endif
+
 /**
  *  Attribute key to retrieve an NSArray containing NSStrings from a GCDWebServerRequest
  *  with the contents of any regular expression captures done on the request path.
@@ -87,6 +93,7 @@ extern NSString* const GCDWebServerRequestAttribute_RegexCaptures;
  *
  *  @warning GCDWebServerRequest instances can be created and used on any GCD thread.
  */
+GCD_SWIFT_UNCHECKED_SENDABLE
 @interface GCDWebServerRequest : NSObject <GCDWebServerBodyWriter>
 
 /**
