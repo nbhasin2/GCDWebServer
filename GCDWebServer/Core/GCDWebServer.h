@@ -72,7 +72,7 @@ typedef GCDWebServerResponse* _Nullable (^GCDWebServerProcessBlock)(__kindof GCD
  *  It's however recommended to return a GCDWebServerErrorResponse on error so more
  *  useful information can be returned to the client.
  */
-typedef void (^GCDWebServerCompletionBlock)(GCDWebServerResponse* _Nullable response);
+typedef void (^GCD_SWIFT_SENDABLE GCDWebServerCompletionBlock)(GCDWebServerResponse* _Nullable response);
 typedef void (^GCDWebServerAsyncProcessBlock)(__kindof GCDWebServerRequest* request, GCDWebServerCompletionBlock completionBlock);
 
 /**
