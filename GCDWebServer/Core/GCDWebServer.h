@@ -32,6 +32,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#if __has_attribute(swift_attr)
+#define GCD_SWIFT_SENDABLE __attribute__((swift_attr("@Sendable")))
+#else
+#define GCD_SWIFT_SENDABLE
+#endif
+
 /**
  *  The GCDWebServerMatchBlock is called for every handler added to the
  *  GCDWebServer whenever a new HTTP request has started (i.e. HTTP headers have
